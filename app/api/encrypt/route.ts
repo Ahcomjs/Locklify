@@ -9,8 +9,18 @@ function getKeyFromPassword(password: string): Buffer {
 export async function POST(request: NextRequest) {
   const { text, password } = await request.json();
 
+  if (typeof text !== 'string' || typeof password !== 'string') {
+    return NextResponse.json(
+      { success: false, error: 'Text and password must be strings.' },
+      { status: 400 }
+    );
+  }
+
   if (!text || !password) {
-    return NextResponse.json({ error: 'Text and password are required.' }, { status: 400 });
+    return NextResponse.json(
+      { success: false, error: 'Text and password are required.' },
+      { status: 400 }
+    );
   }
 
   try {
@@ -20,9 +30,25 @@ export async function POST(request: NextRequest) {
     let encrypted = cipher.update(text, 'utf8', 'hex');
     encrypted += cipher.final('hex');
 
-    return NextResponse.json({ encryptedText: `${iv.toString('hex')}:${encrypted}` });
-  } catch (error: any) {
+    return NextResponse.json({
+      success: true,
+      encryptedText: `${iv.toString('hex')}:${encrypted}`,
+    });
+  } catch (error: unknown) {
     console.error('Encryption error:', error);
-    return NextResponse.json({ error: 'Failed to encrypt text.', details: error.message }, { status: 500 });
+
+    let message = 'Unknown error';
+    if (error instanceof Error) {
+      message = error.message;
+    }
+
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Failed to encrypt text.',
+        details: message,
+      },
+      { status: 500 }
+    );
   }
 }

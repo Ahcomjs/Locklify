@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from "next/image";
-import encrypted from '@/public/assets/img/encrypted.png'; 
+import encrypted from '@/public/assets/img/encrypted.png';
 
 export default function Home() {
   const [inputText, setInputText] = useState('');
@@ -13,7 +13,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const handleApiCall = async (endpoint: 'encrypt' | 'decrypt') => { 
+  const handleApiCall = async (endpoint: 'encrypt' | 'decrypt') => {
     setError('');
     setOutputText('');
     if (!inputText || !password) {
@@ -38,7 +38,7 @@ export default function Home() {
       }
 
       setOutputText(endpoint === 'encrypt' ? data.encryptedText : data.decryptedText);
-    } catch (err: unknown) { 
+    } catch (err: unknown) {
       if (err instanceof Error) {
         setError(`Error during ${endpoint}: ${err.message}`);
       } else {
@@ -110,7 +110,7 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute top-1/2 -translate-y-1/2 right-3 text-gray-400 hover:text-cyan-400 transition-colors mt-4" 
+              className="absolute top-1/2 -translate-y-1/2 right-3 text-gray-400 hover:text-cyan-400 transition-colors mt-4"
               disabled={loading}
               aria-label={showPassword ? 'Hide password' : 'Show password'}
             >
@@ -127,7 +127,7 @@ export default function Home() {
             </button>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3"> 
+          <div className="flex flex-col sm:flex-row gap-3">
             <button
               onClick={() => handleApiCall('encrypt')}
               disabled={loading}
@@ -169,7 +169,9 @@ export default function Home() {
       </div>
 
       {copied && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-cyan-700 text-white px-4 py-2 rounded-md shadow-lg animate-slideUp text-sm z-50">
+        <div
+          className="fixed bottom-6 left-1/5 -translate-x-1/3 bg-cyan-700 text-white px-4 py-2 rounded-md shadow-lg text-sm z-50 transition-opacity duration-500 opacity-100 animate-slideUp"
+        >
           ✅ Copied to clipboard!
         </div>
       )}

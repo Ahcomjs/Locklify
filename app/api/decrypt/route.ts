@@ -32,8 +32,31 @@ export async function POST(request: NextRequest) {
     decrypted += decipher.final('utf8');
 
     return NextResponse.json({ decryptedText: decrypted });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Decryption error:', error);
-    return NextResponse.json({ error: 'Failed to decrypt text.', details: error.message }, { status: 500 });
+
+    let message = 'Unknown error';
+    let status = 500;
+
+    if (error instanceof Error) {
+      message = error.message;
+
+      if (
+        message.includes('bad decrypt') ||
+        message.includes('Wrong final block length') ||
+        message.includes('Error during decrypt') ||
+        message.includes('unable to decrypt data')
+      ) {
+        status = 400;
+        message = 'Incorrect password or corrupted data.';
+      }
+    }
+
+    return NextResponse.json(
+      { error: 'Failed to decrypt text.', details: message },
+      { status }
+    );
   }
+
+
 }
