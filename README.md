@@ -1,5 +1,5 @@
 <p align="center">
-  <img  src="https://github.com/user-attachments/assets/8b2ef9f5-4d01-4d30-b54b-c23170d3ee06" alt="Gradient Generator Logo" width="150">
+  <img   src="https://github.com/user-attachments/assets/7c9fce1f-5c8f-4866-bc4d-494b688d2870" alt="Gradient Generator Logo" width="150">
 </p>
 
 <h1 align="center">Locklify</h1>
@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://locklify-app.vercel.app/" target="_blank">
+  <a href="https://locklify.vercel.app/" target="_blank">
     <img src="https://img.shields.io/badge/Live_Demo-View_Here-blue?style=for-the-badge&logo=vercel" alt="Live Demo">
   </a>
   <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge" alt="Project Status">
