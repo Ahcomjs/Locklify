@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6e854f0b-4051-44b4-8bdb-3fd4ed48b838" alt="Gradient Generator Logo" width="150">
+  <img  src="https://github.com/user-attachments/assets/8b2ef9f5-4d01-4d30-b54b-c23170d3ee06" alt="Gradient Generator Logo" width="150">
 </p>
 
 <h1 align="center">Locklify</h1>
@@ -28,6 +28,7 @@ Locklify is built using a modern web development stack focused on performance, s
 
 * **React**: A powerful JavaScript library for building dynamic and reusable user interfaces.
 * **Vite**: A lightning-fast build tool and development server that offers instant hot module replacement and optimized builds.
+* **Next.js**: Framework basado en React que permite SSR, rutas basadas en archivos y API Routes integradas.
 * **TypeScript**: A strongly-typed superset of JavaScript that helps catch bugs early and improve code maintainability.
 * **Tailwind CSS**: A utility-first CSS framework that allows for rapid UI development with a consistent and responsive design system.
 * **shadcn/ui**: A collection of beautifully designed and accessible React components built with Radix UI and Tailwind CSS.
@@ -103,18 +104,6 @@ Make sure you have the following installed on your system:
     For the star background effect, you'll need two simple transparent PNG images in your `public/` folder:
     * `public/stars.png` (a dark background with scattered white dots to simulate stars).
     * `public/twinkling.png` (a transparent background with brighter, varied white dots, for the twinkling effect).
-
----
-
-## 🖥️ Local Development
-
-Once the installation steps are complete, you can start your development environment:
-
-1.  **Start the Vercel development server:**
-    ```bash
-    vercel dev
-    ```
-    This will launch your React application in the browser (usually at `http://localhost:3000/`) and make your serverless functions available for encryption/decryption operations.
 
 ---
 
